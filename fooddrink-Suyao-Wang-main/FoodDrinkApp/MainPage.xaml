@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:FoodDrinkApp.Models"
+             x:Class="FoodDrinkApp.MainPage"
+             Title="NutriBite">
+    <Grid RowDefinitions="Auto,*">
+        <Grid Padding="20,16,20,16">
+            <Border StrokeThickness="0" Padding="20">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="{AppThemeBinding Light={StaticResource TertiaryLight}, Dark={StaticResource TertiaryDark}}" Offset="0.0" />
+                        <GradientStop Color="{AppThemeBinding Light={StaticResource SecondaryLight}, Dark={StaticResource SecondaryDark}}" Offset="0.5" />
+                        <GradientStop Color="{AppThemeBinding Light={StaticResource PrimaryLight}, Dark={StaticResource PrimaryDark}}" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.Shadow>
+                    <Shadow Brush="#20000000" Offset="0,6" Radius="16" Opacity="0.35" />
+                </Border.Shadow>
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="12">
+                    <Label Text="NutriBite"
+                           FontSize="34"
+                           FontAttributes="Bold"
+                           TextColor="#FFFFFF"
+                           SemanticProperties.HeadingLevel="Level1" />
+                    <Label Grid.Row="1"
+                           Text="Track nutrition, flavour, photos, and meal context in one place."
+                           FontSize="15"
+                           TextColor="#FFFFFF"
+                           LineBreakMode="WordWrap" />
+                    <Grid Grid.Row="2" ColumnDefinitions="*,*,*" ColumnSpacing="10" Margin="0,4,0,0">
+                        <Border BackgroundColor="#40FFFFFF" StrokeThickness="0" Padding="12,8">
+                            <Label Text="Nutrition" TextColor="#FFFFFF" FontSize="13" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                        </Border>
+                        <Border Grid.Column="1" BackgroundColor="#40FFFFFF" StrokeThickness="0" Padding="12,8">
+                            <Label Text="Photos" TextColor="#FFFFFF" FontSize="13" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                        </Border>
+                        <Border Grid.Column="2" BackgroundColor="#40FFFFFF" StrokeThickness="0" Padding="12,8">
+                            <Label Text="Voice" TextColor="#FFFFFF" FontSize="13" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Row="3" ColumnDefinitions="*,Auto" ColumnSpacing="12" Margin="0,6,0,0">
+                        <Border StrokeThickness="1"
+                                Stroke="{AppThemeBinding Light=#FFFFFF, Dark=#40FFFFFF}"
+                                BackgroundColor="#80FFFFFF"
+                                Padding="0">
+                            <SearchBar x:Name="SearchFoodBar"
+                                       Placeholder="Search foods, drinks, categories, or tags"
+                                       TextChanged="OnSearchTextChanged"
+                                       SearchButtonPressed="OnSearchButtonPressed"
+                                       TextColor="#2D2D2D"
+                                       PlaceholderColor="#6B6B6B"
+                                       BackgroundColor="Transparent"
+                                       SemanticProperties.Hint="Search the food and drink list" />
+                        </Border>
+                        <Button Grid.Column="1"
+                                Text="Add"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"
+                                TextColor="#FFFFFF"
+                                FontAttributes="Bold"
+                                Padding="18,12"
+                                CornerRadius="10"
+                                Clicked="OnAddClicked"
+                                SemanticProperties.Hint="Add a new food or drink record" />
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <RefreshView Grid.Row="1" x:Name="FoodRefreshView" Refreshing="OnRefreshing">
+            <CollectionView x:Name="FoodCollection"
+                            SelectionMode="None"
+                            EmptyView="No matching food or drink records."
+                            Margin="16,0,16,20">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:FoodItem">
+                        <Border StrokeThickness="1"
+                                Stroke="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceLight}, Dark={StaticResource SurfaceDark}}"
+                                Padding="0"
+                                Margin="0,0,0,14">
+                            <Border.Shadow>
+                                <Shadow Brush="#15000000" Offset="0,4" Radius="12" Opacity="0.25" />
+                            </Border.Shadow>
+                            <Grid ColumnDefinitions="*">
+                                <Grid Padding="18" RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,Auto" RowSpacing="10" ColumnSpacing="12">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="22"
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light={StaticResource TextPrimaryLight}, Dark={StaticResource TextPrimaryDark}}"
+                                           SemanticProperties.HeadingLevel="Level2" />
+                                    <Border Grid.Column="1"
+                                            StrokeThickness="0"
+                                            BackgroundColor="{AppThemeBinding Light={StaticResource SecondaryLight}, Dark={StaticResource SecondaryDark}}"
+                                            Padding="12,6">
+                                        <Label Text="{Binding CaloriesLabel}"
+                                               FontSize="14"
+                                               FontAttributes="Bold"
+                                               TextColor="{AppThemeBinding Light={StaticResource SecondaryAccent}, Dark={StaticResource SecondaryLight}}" />
+                                    </Border>
+                                    <Label Grid.Row="1"
+                                           Grid.ColumnSpan="2"
+                                           Text="{Binding Description}"
+                                           FontSize="15"
+                                           TextColor="{AppThemeBinding Light={StaticResource TextSecondaryLight}, Dark={StaticResource TextSecondaryDark}}"
+                                           LineBreakMode="TailTruncation" />
+                                    <Label Grid.Row="2"
+                                           Grid.ColumnSpan="2"
+                                           Text="{Binding MacroSummary}"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light={StaticResource TertiaryAccent}, Dark={StaticResource TertiaryLight}}" />
+                                    <Grid Grid.Row="3" Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" Margin="0,6,0,0">
+                                        <Label Text="{Binding Category}"
+                                               FontSize="14"
+                                               FontAttributes="Bold"
+                                               TextColor="{AppThemeBinding Light={StaticResource PrimaryAccent}, Dark={StaticResource PrimaryLight}}" />
+                                        <Button Grid.Column="1"
+                                                Text="Details"
+                                                Padding="16,10"
+                                                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryAccent}, Dark={StaticResource PrimaryLight}}"
+                                                TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}"
+                                                CommandParameter="{Binding Id}"
+                                                Clicked="OnDetailsClicked"
+                                                SemanticProperties.Hint="Open nutrition details" />
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>
