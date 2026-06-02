@@ -1,0 +1,21 @@
+NutriTrack Food Assistant
+
+A cross-platform food nutrition tracking application built with .NET MAUI.
+
+Main Features:
+- Browse and search food and drink list
+- Add new diet records
+- View nutrition details (calories, protein, carbs, fat)
+- Take food photos
+- Get dining location
+- Text-to-speech for nutrition summary
+- Vibration and haptic feedback
+- Support dark/light themes and large font mode
+
+Technical Features:
+- Cross-platform support: Android, Windows
+- Data source: mockapi.io REST API with local fallback
+- Complete input validation and error handling
+- Rich accessibility support
+
+Version: finnal
