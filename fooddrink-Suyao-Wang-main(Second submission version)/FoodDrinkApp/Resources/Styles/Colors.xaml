@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- 浅粉色系 - Primary -->
+    <Color x:Key="PrimaryLight">#FFB6C1</Color>
+    <Color x:Key="Primary">#FF9CAE</Color>
+    <Color x:Key="PrimaryDark">#FF7A93</Color>
+    <Color x:Key="PrimaryAccent">#FF5A7A</Color>
+
+    <!-- 浅蓝色系 - Secondary -->
+    <Color x:Key="SecondaryLight">#ADD8E6</Color>
+    <Color x:Key="Secondary">#87CEEB</Color>
+    <Color x:Key="SecondaryDark">#6BB3D9</Color>
+    <Color x:Key="SecondaryAccent">#4A9CC8</Color>
+
+    <!-- 浅绿色系 - Tertiary -->
+    <Color x:Key="TertiaryLight">#90EE90</Color>
+    <Color x:Key="Tertiary">#77DD77</Color>
+    <Color x:Key="TertiaryDark">#5BCB5B</Color>
+    <Color x:Key="TertiaryAccent">#3EB83E</Color>
+
+    <!-- 背景色 - 浅橙色主题 -->
+    <Color x:Key="BackgroundColorLight">#FFEDD5</Color>
+    <Color x:Key="BackgroundColorDark">#1E1812</Color>
+    
+    <Color x:Key="SurfaceLight">#FFFFFF</Color>
+    <Color x:Key="SurfaceDark">#281F18</Color>
+
+    <!-- 文本色 -->
+    <Color x:Key="TextPrimaryLight">#3D3020</Color>
+    <Color x:Key="TextPrimaryDark">#FAF5ED</Color>
+    
+    <Color x:Key="TextSecondaryLight">#7A6B55</Color>
+    <Color x:Key="TextSecondaryDark">#C4B8A5</Color>
+
+    <!-- 边框和分隔线 -->
+    <Color x:Key="BorderLight">#F0E0CC</Color>
+    <Color x:Key="BorderDark">#4A3B2E</Color>
+
+    <!-- 保留原有但重新映射的颜色 -->
+    <Color x:Key="White">White</Color>
+    <Color x:Key="Black">Black</Color>
+    <Color x:Key="OffBlack">#141213</Color>
+
+    <!-- 灰色系 -->
+    <Color x:Key="Gray100">#F5F5F5</Color>
+    <Color x:Key="Gray200">#E0E0E0</Color>
+    <Color x:Key="Gray300">#C4C4C4</Color>
+    <Color x:Key="Gray400">#9E9E9E</Color>
+    <Color x:Key="Gray500">#757575</Color>
+    <Color x:Key="Gray600">#4A4A4A</Color>
+    <Color x:Key="Gray900">#212121</Color>
+
+    <!-- 刷子 -->
+    <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource PrimaryLight}" />
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" />
+    <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDark}" />
+    <SolidColorBrush x:Key="PrimaryAccentBrush" Color="{StaticResource PrimaryAccent}" />
+    
+    <SolidColorBrush x:Key="SecondaryLightBrush" Color="{StaticResource SecondaryLight}" />
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}" />
+    <SolidColorBrush x:Key="SecondaryDarkBrush" Color="{StaticResource SecondaryDark}" />
+    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="{StaticResource SecondaryAccent}" />
+    
+    <SolidColorBrush x:Key="TertiaryLightBrush" Color="{StaticResource TertiaryLight}" />
+    <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}" />
+    <SolidColorBrush x:Key="TertiaryDarkBrush" Color="{StaticResource TertiaryDark}" />
+    <SolidColorBrush x:Key="TertiaryAccentBrush" Color="{StaticResource TertiaryAccent}" />
+    
+    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}" />
+    <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}" />
+
+    <SolidColorBrush x:Key="Gray100Brush" Color="{StaticResource Gray100}" />
+    <SolidColorBrush x:Key="Gray200Brush" Color="{StaticResource Gray200}" />
+    <SolidColorBrush x:Key="Gray300Brush" Color="{StaticResource Gray300}" />
+    <SolidColorBrush x:Key="Gray400Brush" Color="{StaticResource Gray400}" />
+    <SolidColorBrush x:Key="Gray500Brush" Color="{StaticResource Gray500}" />
+    <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}" />
+    <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}" />
+</ResourceDictionary>

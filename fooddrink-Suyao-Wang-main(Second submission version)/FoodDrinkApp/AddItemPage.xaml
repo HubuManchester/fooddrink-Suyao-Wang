@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDrinkApp.AddItemPage"
+             Title="Add Record">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,16,20,20" Spacing="18">
+            <Border StrokeThickness="0" Padding="20" BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceLight}, Dark={StaticResource SurfaceDark}}">
+                <Border.Shadow>
+                    <Shadow Brush="#15000000" Offset="0,4" Radius="12" Opacity="0.25" />
+                </Border.Shadow>
+                <Grid RowDefinitions="Auto,Auto" RowSpacing="8">
+                    <Label Text="Add food or drink"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource TextPrimaryLight}, Dark={StaticResource TextPrimaryDark}}"
+                           SemanticProperties.HeadingLevel="Level1" />
+                    <Label Grid.Row="1"
+                           Text="Record the full details of a meal worth remembering."
+                           FontSize="15"
+                           TextColor="{AppThemeBinding Light={StaticResource TextSecondaryLight}, Dark={StaticResource TextSecondaryDark}}" />
+                </Grid>
+            </Border>
+
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceLight}, Dark={StaticResource SurfaceDark}}"
+                    Padding="18">
+                <Border.Shadow>
+                    <Shadow Brush="#10000000" Offset="0,2" Radius="8" Opacity="0.2" />
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="Basic information" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource PrimaryAccent}, Dark={StaticResource PrimaryLight}}" />
+                    <Entry x:Name="NameEntry"
+                           Placeholder="Name"
+                           SemanticProperties.Hint="Required food or drink name" />
+                    <Picker x:Name="CategoryPicker"
+                            Title="Category"
+                            SemanticProperties.Hint="Required category">
+                        <Picker.Items>
+                            <x:String>Breakfast</x:String>
+                            <x:String>Lunch</x:String>
+                            <x:String>Dinner</x:String>
+                            <x:String>Snack</x:String>
+                            <x:String>Drink</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Editor x:Name="DescriptionEditor"
+                            Placeholder="Description, ingredients, flavour, or context"
+                            AutoSize="TextChanges"
+                            HeightRequest="110"
+                            SemanticProperties.Hint="Describe this food or drink" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="1"
+                    Stroke="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceLight}, Dark={StaticResource SurfaceDark}}"
+                    Padding="18">
+                <Border.Shadow>
+                    <Shadow Brush="#10000000" Offset="0,2" Radius="8" Opacity="0.2" />
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="Nutrition data" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource TertiaryAccent}, Dark={StaticResource TertiaryLight}}" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                        <Entry x:Name="CaloriesEntry"
+                               Placeholder="Calories"
+                               Keyboard="Numeric"
+                               SemanticProperties.Hint="Required calories as a number" />
+                        <Entry x:Name="ProteinEntry"
+                               Grid.Column="1"
+                               Placeholder="Protein g"
+                               Keyboard="Numeric" />
+                    </Grid>
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                        <Entry x:Name="CarbsEntry"
+                               Placeholder="Carbs g"
+                               Keyboard="Numeric" />
+                        <Entry x:Name="FatEntry"
+                               Grid.Column="1"
+                               Placeholder="Fat g"
+                               Keyboard="Numeric" />
+                    </Grid>
+                    <Entry x:Name="AllergyEntry"
+                           Placeholder="Allergy note or dietary restriction"
+                           SemanticProperties.Hint="Enter allergy or dietary information" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border x:Name="ValidationPanel"
+                    IsVisible="False"
+                    StrokeThickness="0"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryLight}, Dark={StaticResource PrimaryDark}}"
+                    Padding="16">
+                <Label x:Name="ValidationLabel"
+                       TextColor="{AppThemeBinding Light={StaticResource PrimaryAccent}, Dark={StaticResource PrimaryLight}}"
+                       FontAttributes="Bold" />
+            </Border>
+
+            <Button Text="Save record"
+                    FontAttributes="Bold"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryAccent}, Dark={StaticResource PrimaryLight}}"
+                    TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}"
+                    Clicked="OnSaveClicked"
+                    SemanticProperties.Hint="Validate and save this record" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
